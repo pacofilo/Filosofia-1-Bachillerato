@@ -159,6 +159,7 @@ color: #fff; display: flex; align-items: center; justify-content: center;
 font-size: 15px; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease;
 }
 .video-mute-btn:hover { background: rgba(0,0,0,0.7); transform: scale(1.08); }
+.video-mute-btn.is-silenced { background: rgba(160,30,30,0.75); }
 
 /* Body */
 .card-body { padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 7px; flex: 1; align-items: center; text-align: center; }
@@ -250,6 +251,10 @@ border-radius: 6px; width: fit-content; margin-top: 2px;
 
 <a class="card" href="https://pacofilo.github.io/tradiciones-culturales/" target="_blank">
 <div class="card-img">
+<video class="card-video" autoplay muted loop playsinline preload="metadata" aria-label="Sección 1">
+<source src="videos/filosofia-1-bachillerato-seccion-1.mp4" type="video/mp4">
+</video>
+<button type="button" class="video-mute-btn" aria-label="Silenciar audio de esta sección" title="Silenciar audio de esta sección" onclick="event.preventDefault(); event.stopPropagation(); toggleSound(this);">🔊</button>
 </div>
 <div class="card-body">
 <span class="card-title">Sección 1</span>
@@ -373,7 +378,7 @@ border-radius: 6px; width: fit-content; margin-top: 2px;
 <video class="card-video" autoplay muted loop playsinline preload="metadata" aria-label="Quizzes">
 <source src="videos/filosofia-1-bachillerato-tema-6.mp4" type="video/mp4">
 </video>
-<button type="button" class="video-mute-btn" aria-label="Activar sonido" onclick="event.preventDefault(); event.stopPropagation(); toggleSound(this);">🔇</button>
+<button type="button" class="video-mute-btn" aria-label="Silenciar audio de esta sección" title="Silenciar audio de esta sección" onclick="event.preventDefault(); event.stopPropagation(); toggleSound(this);">🔊</button>
 </div>
 <div class="card-body">
 <span class="card-title">Quizzes</span>
@@ -405,12 +410,60 @@ btn.textContent = muted ? '🔇' : '🔊';
 btn.setAttribute('aria-label', muted ? 'Activar sonido' : 'Silenciar sonido');
 }
 
+/* ===== Vídeos de las secciones: se reproducen solos (en silencio)
+   y solo suenan mientras el cursor está encima de la tarjeta.
+   El botón de cada sección silencia/reactiva su audio. ===== */
+function setCardBtnUI(btn, silenced) {
+btn.textContent = silenced ? '🔇' : '🔊';
+btn.classList.toggle('is-silenced', silenced);
+const label = silenced ? 'Activar audio de esta sección' : 'Silenciar audio de esta sección';
+btn.setAttribute('aria-label', label);
+btn.title = label;
+}
+
+function playMuted(video) {
+video.muted = true;
+const p = video.play();
+if (p && p.catch) p.catch(() => {});
+}
+
+function setCardAudio(card, on) {
+const video = card.querySelector('.card-video');
+if (!video) return;
+if (!on) { video.muted = true; return; }
+// Silencia el resto de vídeos para que solo suene uno
+document.querySelectorAll('video').forEach((v) => { if (v !== video) v.muted = true; });
+document.querySelectorAll('.featured-mute-btn').forEach((b) => setButtonMutedUI(b, true));
+video.muted = false;
+const p = video.play();
+// Si el navegador bloquea el sonido (aún no se ha interactuado con la página), sigue en silencio
+if (p && p.catch) p.catch(() => playMuted(video));
+}
+
+document.querySelectorAll('.card').forEach((card) => {
+const video = card.querySelector('.card-video');
+if (!video) return;
+card.addEventListener('mouseenter', () => {
+if (card.dataset.silenced !== 'true') setCardAudio(card, true);
+});
+card.addEventListener('mouseleave', () => setCardAudio(card, false));
+});
+
 function toggleSound(btn) {
+if (btn.classList.contains('video-mute-btn')) {
+const card = btn.closest('.card');
+const silenced = card.dataset.silenced !== 'true';
+card.dataset.silenced = silenced ? 'true' : 'false';
+setCardBtnUI(btn, silenced);
+setCardAudio(card, !silenced && card.matches(':hover'));
+return;
+}
 const video = btn.parentElement.querySelector('video') || btn.previousElementSibling;
 if (!video || video.tagName !== 'VIDEO') return;
 const willUnmute = video.muted;
 if (willUnmute) {
-document.querySelectorAll('.featured-mute-btn, .video-mute-btn').forEach((otherBtn) => {
+document.querySelectorAll('.card-video').forEach((v) => { v.muted = true; });
+document.querySelectorAll('.featured-mute-btn').forEach((otherBtn) => {
 if (otherBtn === btn) return;
 const otherVideo = otherBtn.parentElement.querySelector('video');
 if (otherVideo && !otherVideo.muted) {
