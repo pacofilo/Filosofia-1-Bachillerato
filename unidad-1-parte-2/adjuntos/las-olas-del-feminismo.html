@@ -1,0 +1,310 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Las olas del feminismo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Concepto: cuadro comparativo tipo cartel sufragista (violeta, blanco, verde de la WSPU); cabecera de olas como pestañas, tabla con primera columna fija */
+:root{
+  --bg:#f7f6fa;
+  --surface:#ffffff;
+  --ink:#1f1a2b;
+  --muted:#5d566b;
+  --line:#dcd7e6;
+  --violet:#5b2a86;
+  --violet-soft:#efe7f7;
+  --green:#2f6b3e;
+  --green-soft:#e5f1e7;
+  --f-display:"Gloock", Georgia, "Times New Roman", serif;
+  --f-body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#16131d;--surface:#201b2a;--ink:#ece8f3;--muted:#a69fb4;--line:#363044;
+  --violet:#c4a2ea;--violet-soft:#2e2340;--green:#8fcf9d;--green-soft:#1d3024;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#16131d;--surface:#201b2a;--ink:#ece8f3;--muted:#a69fb4;--line:#363044;
+  --violet:#c4a2ea;--violet-soft:#2e2340;--green:#8fcf9d;--green-soft:#1d3024;color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:flex;flex-direction:column;gap:22px}
+
+header{display:flex;flex-direction:column;gap:8px;border-bottom:3px solid var(--violet);padding-bottom:18px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.02;margin:0;text-wrap:balance;color:var(--violet)}
+.lead{max-width:68ch;color:var(--muted);margin:0}
+
+.controls{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:flex-end}
+.ctl{display:flex;flex-direction:column;gap:6px}
+.ctl-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.seg{display:inline-flex;border:1.5px solid var(--violet);border-radius:999px;overflow:hidden}
+.seg button{font:inherit;font-size:14px;border:0;background:transparent;color:var(--violet);padding:7px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--violet);color:var(--surface)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:13px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:4px 11px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+
+/* tira de olas */
+.waves{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.wave{font:inherit;text-align:left;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:12px 12px 10px;cursor:pointer;display:flex;flex-direction:column;gap:3px;min-width:0}
+.wave .num{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.wave .nm{font-family:var(--f-display);font-size:19px;line-height:1.15;color:var(--violet)}
+.wave .dt{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.wave[aria-pressed="true"]{border-color:var(--violet);box-shadow:inset 0 -4px 0 var(--violet)}
+@media (max-width:760px){.waves{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* tabla */
+.tablebox{overflow-x:auto;border:1.5px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:1080px;font-size:14px}
+th,td{vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);text-align:left}
+thead th{position:sticky;top:0;background:var(--violet);color:var(--surface);font-weight:400;z-index:2}
+thead th .num{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+thead th .nm{font-family:var(--f-display);font-size:18px;line-height:1.15}
+thead th .dt{display:block;font-family:var(--f-mono);font-size:11.5px;opacity:.85}
+tbody th{position:sticky;left:0;background:var(--violet-soft);color:var(--violet);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;width:120px;z-index:1}
+thead th:first-child{left:0;z-index:3}
+td.hl,thead th.hl{background:var(--green-soft)}
+thead th.hl{background:var(--green);}
+td ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:4px}
+td .who b,.card .who b{color:var(--violet)}
+td .ref i{color:var(--ink)}
+.y{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* fichas */
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:22px clamp(16px,3vw,32px);display:flex;flex-direction:column;gap:20px}
+.card-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:14px}
+.card h2{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,4vw,40px);margin:0;color:var(--violet);line-height:1.05;text-wrap:balance}
+.motto{font-style:italic;color:var(--green);margin:4px 0 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+.block{min-width:0}
+.block h3{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin:0 0 8px;padding-bottom:4px;border-bottom:1.5px solid var(--green-soft)}
+.block ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.block p{margin:0;max-width:70ch}
+.block.full{grid-column:1/-1}
+.nav{display:flex;gap:8px}
+.nav button{font:inherit;font-size:14px;border:1.5px solid var(--violet);color:var(--violet);background:transparent;border-radius:8px;padding:6px 12px;cursor:pointer}
+.nav button:disabled{opacity:.35;cursor:default}
+
+.note{font-size:14px;color:var(--muted);max-width:80ch;margin:0;border-left:3px solid var(--green);padding-left:12px}
+footer{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.card{animation:in .25s ease-out}@keyframes in{from{transform:translateY(4px)}to{transform:none}}}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Educación en valores · Filosofía · IES Alquipir</span>
+    <h1>Las olas del feminismo</h1>
+    <p class="lead">Qué pidieron las mujeres en cada etapa, qué consiguieron y qué ideas dejaron. Pulsa una ola para resaltarla en el cuadro o cambia a la vista de fichas para leerla con calma.</p>
+  </header>
+
+  <div class="controls">
+    <div class="ctl">
+      <span class="ctl-label">Vista</span>
+      <div class="seg" role="group" aria-label="Vista">
+        <button id="v-table" aria-pressed="true">Cuadro comparativo</button>
+        <button id="v-cards" aria-pressed="false">Fichas</button>
+      </div>
+    </div>
+    <div class="ctl">
+      <span class="ctl-label">Numeración de las olas</span>
+      <div class="seg" role="group" aria-label="Periodización">
+        <button id="p-es" aria-pressed="true">España (Valcárcel, Amorós)</button>
+        <button id="p-en" aria-pressed="false">Anglosajona</button>
+      </div>
+    </div>
+    <div class="ctl" id="rows-ctl">
+      <span class="ctl-label">Filas visibles</span>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+
+  <div class="waves" id="waves" role="group" aria-label="Olas"></div>
+
+  <p class="note" id="pnote"></p>
+
+  <div id="table-view" class="tablebox"></div>
+  <div id="card-view" hidden></div>
+
+  <footer>Material de aula. Fechas de leyes españolas: divorcio (Ley 30/1981), Ley Orgánica 1/2004 de violencia de género, Ley Orgánica 3/2007 de igualdad efectiva.</footer>
+</div>
+
+<script>
+const WAVES = [
+{
+  id:"ant",
+  es:"Antecedentes", en:"Antecedentes",
+  nombre:"La querella de las mujeres",
+  fechas:"s. XV – XVII",
+  lema:"Las mujeres no son inferiores por naturaleza, sino por falta de educación.",
+  contexto:"Debate literario y teológico, la «querella de las mujeres», sobre si la mujer es inferior al varón. Aún no hay un movimiento organizado, sino voces aisladas, casi siempre de mujeres cultas de la nobleza o de conventos.",
+  pidieron:["Reconocer que las mujeres tienen la misma capacidad racional que los hombres","Acceso a la educación y a la cultura","Defender la dignidad de las mujeres frente a la misoginia de la literatura y la teología"],
+  aportaciones:["Primera respuesta escrita y razonada a la misoginia tradicional","La idea de que la inferioridad femenina es un efecto de la educación, no de la naturaleza","Genealogía de mujeres ilustres como argumento de su valía"],
+  figuras:[["Christine de Pizan","escritora francesa, considerada la primera autora que vivió de su pluma"],["Teresa de Cartagena","monja castellana, defiende la capacidad de la mujer para escribir"],["Sor Juana Inés de la Cruz","defiende el derecho de las mujeres a estudiar (Nueva España)"],["François Poulain de la Barre","filósofo cartesiano: «la mente no tiene sexo»"]],
+  obras:[["La ciudad de las damas","C. de Pizan",1405],["Admiraçión operum Dey","T. de Cartagena","c. 1480"],["De la igualdad de los dos sexos","Poulain de la Barre",1673],["Respuesta a sor Filotea","Sor Juana Inés",1691]],
+  espana:["Teresa de Cartagena y María de Zayas (Novelas amorosas y ejemplares, 1637) denuncian la situación de las mujeres","Benito J. Feijoo, «Defensa de las mujeres» en el Teatro crítico universal (1726), ya en el umbral de la Ilustración"],
+  conceptos:["Querella de las mujeres","Misoginia","Igualdad de capacidades racionales","Cartesianismo aplicado al sexo"]
+},
+{
+  id:"w1",
+  es:"1ª ola", en:"Feminismo ilustrado (antes de la 1ª ola)",
+  nombre:"Feminismo ilustrado",
+  fechas:"1673 – 1848",
+  lema:"Si los derechos son universales, también son de las mujeres.",
+  contexto:"La Ilustración y la Revolución francesa proclaman la igualdad y los derechos «del hombre y del ciudadano». Las mujeres señalan la contradicción: esa universalidad las deja fuera. Rousseau, en el Emilio (libro V), defiende una educación de Sofía orientada a agradar y servir al varón.",
+  pidieron:["Ciudadanía: que los derechos del hombre incluyan a la mujer","Educación igual a la de los varones","Derecho a la propiedad y a no estar sometida al marido","Participación política y libertad de expresión"],
+  aportaciones:["Vincular feminismo e Ilustración: la razón universal exige la igualdad","La crítica a Rousseau y a la «educación para agradar»","Primer documento de derechos de las mujeres (De Gouges, 1791)","Convertir la igualdad entre sexos en un problema político, no solo moral"],
+  figuras:[["Olympe de Gouges","redacta la Declaración de los Derechos de la Mujer; guillotinada en 1793"],["Mary Wollstonecraft","responde a Rousseau y reclama educación racional para las mujeres"],["Condorcet","defiende el derecho de ciudadanía de las mujeres"],["Josefa Amar y Borbón","ilustrada aragonesa, defiende el talento de las mujeres"]],
+  obras:[["Sobre la admisión de las mujeres al derecho de ciudadanía","Condorcet",1790],["Declaración de los Derechos de la Mujer y de la Ciudadana","O. de Gouges",1791],["Vindicación de los derechos de la mujer","M. Wollstonecraft",1792],["Discurso sobre la educación física y moral de las mujeres","J. Amar y Borbón",1790]],
+  espana:["Josefa Amar y Borbón publica el Discurso en defensa del talento de las mujeres (1786)","Debate sobre la admisión de mujeres en la Real Sociedad Económica Matritense: se crea la Junta de Damas (1787)"],
+  conceptos:["Universalismo","Ciudadanía","Vindicación","Crítica de la razón patriarcal (término posterior de C. Amorós)"]
+},
+{
+  id:"w2",
+  es:"2ª ola", en:"1ª ola",
+  nombre:"Sufragismo",
+  fechas:"1848 – 1948",
+  lema:"Hechos, no palabras.",
+  contexto:"Revolución industrial, liberalismo y movimiento obrero. Las mujeres trabajan en fábricas pero no votan, no pueden estudiar en la universidad ni disponer de sus bienes si están casadas. Surgen asociaciones organizadas, con mítines, periódicos y, en el Reino Unido, acción directa.",
+  pidieron:["Derecho al voto (sufragio femenino)","Acceso a la universidad y a las profesiones","Derechos civiles de la mujer casada: propiedad, herencia, custodia de los hijos","Igualdad salarial y mejores condiciones laborales (feminismo obrero)","Abolición de la esclavitud, unida a la lucha sufragista en EE. UU."],
+  aportaciones:["El voto femenino: Nueva Zelanda (1893), Finlandia (1906), Reino Unido (1918 parcial, 1928 pleno), EE. UU. (1920), España (1931), Francia (1944)","Entrada de las mujeres en la universidad","Reconocimiento de la igualdad en la Declaración Universal de Derechos Humanos (1948)","El 8 de marzo como día de la mujer trabajadora (propuesto en Copenhague, 1910)","Primeras teorías que unen la emancipación de la mujer con la crítica de clase o de raza"],
+  figuras:[["Elizabeth Cady Stanton y Lucretia Mott","organizan la convención de Seneca Falls (1848)"],["Sojourner Truth","exesclava, discurso «¿Acaso no soy una mujer?» (1851)"],["John Stuart Mill y Harriet Taylor","fundamento liberal de la igualdad"],["Emmeline Pankhurst","funda la WSPU (1903), sufragistas británicas"],["Clara Zetkin y Alexandra Kollontai","feminismo socialista"]],
+  obras:[["Declaración de Sentimientos de Seneca Falls","Stanton y otras",1848],["La emancipación de las mujeres","H. Taylor",1851],["El sometimiento de la mujer","J. S. Mill",1869],["La mujer y el socialismo","A. Bebel",1879]],
+  espana:["Concepción Arenal, La mujer del porvenir (1869)","Emilia Pardo Bazán denuncia la desigualdad educativa","Las mujeres pueden matricularse libremente en la universidad desde 1910","Lyceum Club Femenino en Madrid (1926)","Clara Campoamor defiende el voto femenino en las Cortes: se aprueba el 1 de octubre de 1931 y las mujeres votan por primera vez en 1933"],
+  conceptos:["Sufragio universal","Igualdad ante la ley","Feminismo liberal y feminismo socialista","Desobediencia civil"]
+},
+{
+  id:"w3",
+  es:"3ª ola", en:"2ª ola (60-70) y 3ª ola (80-90)",
+  nombre:"Liberación de la mujer",
+  fechas:"1960 – 2000",
+  lema:"Lo personal es político.",
+  contexto:"Las mujeres ya votan, pero la desigualdad sigue en la familia, el trabajo, la sexualidad y la cultura. Tras la posguerra, la «mística de la feminidad» confina a la mujer en el hogar. Mayo del 68, la píldora anticonceptiva y los movimientos por los derechos civiles impulsan un feminismo que mira la vida privada. En los 80 y 90 el movimiento se diversifica.",
+  pidieron:["Libertad sexual y derechos reproductivos: anticonceptivos, aborto","Divorcio e igualdad dentro del matrimonio","Fin de la violencia contra las mujeres, también la doméstica","Igualdad en el empleo y el salario, reparto de las tareas domésticas","Cambiar la cultura que construye lo femenino como inferior","Que se tengan en cuenta las diferencias de raza, clase y orientación sexual (años 80-90)"],
+  aportaciones:["La distinción entre sexo (biológico) y género (cultural)","El concepto de patriarcado como sistema de dominación","Politizar la esfera privada: familia, cuerpo, sexualidad","Estudios de la mujer y de género en la universidad","Convención de la ONU contra la discriminación de la mujer (CEDAW, 1979) y Conferencia de Pekín (1995)","Interseccionalidad: las opresiones se cruzan (K. Crenshaw, 1989)","Corrientes: feminismo liberal, radical, socialista, de la diferencia, negro, ecofeminismo, teoría queer"],
+  figuras:[["Simone de Beauvoir","«No se nace mujer: se llega a serlo»"],["Betty Friedan","funda NOW (1966), feminismo liberal"],["Kate Millett y Shulamith Firestone","feminismo radical"],["Luce Irigaray y Carla Lonzi","feminismo de la diferencia"],["Angela Davis y bell hooks","feminismo negro"],["Judith Butler","el género como performatividad"]],
+  obras:[["El segundo sexo","S. de Beauvoir",1949],["La mística de la feminidad","B. Friedan",1963],["Política sexual","K. Millett",1970],["La dialéctica del sexo","S. Firestone",1970],["Mujeres, raza y clase","A. Davis",1981],["El género en disputa","J. Butler",1990]],
+  espana:["Jornadas por la Liberación de la Mujer en Madrid (diciembre de 1975)","1978: despenalización del adulterio y de los anticonceptivos; la Constitución consagra la igualdad (art. 14)","Ley del divorcio (1981) y despenalización parcial del aborto (1985)","Instituto de la Mujer (1983)","Celia Amorós, Hacia una crítica de la razón patriarcal (1985); Amelia Valcárcel, Sexo y filosofía (1991)"],
+  conceptos:["Sexo y género","Patriarcado","Lo personal es político","Interseccionalidad","Precedente antropológico: M. Mead, Sexo y temperamento (1935), muestra que los roles varían según la cultura"]
+},
+{
+  id:"w4",
+  es:"4ª ola", en:"4ª ola",
+  nombre:"Feminismo en red",
+  fechas:"2010 – hoy",
+  lema:"Ni una menos.",
+  contexto:"Internet y las redes sociales permiten movilizaciones masivas y globales. La igualdad formal está en las leyes de muchos países, pero persisten la violencia sexual, la brecha salarial y el reparto desigual de los cuidados. Es un movimiento muy amplio, con debates internos intensos.",
+  pidieron:["Erradicar la violencia machista y el acoso sexual","Que el consentimiento sea la base de la libertad sexual","Fin de la brecha salarial y del techo de cristal","Reconocer y repartir el trabajo de cuidados","Presencia igualitaria en política, empresa, ciencia y cultura","Coeducación y fin de los estereotipos en publicidad y medios"],
+  aportaciones:["Movilización global: Ni Una Menos (Argentina, 2015), #MeToo (2017), huelgas del 8M","Visibilizar el acoso y la violencia sexual en el trabajo y la vida cotidiana","El consentimiento en el centro de las leyes sobre libertad sexual","Planes de igualdad, paridad en listas electorales, lenguaje inclusivo","Debates abiertos dentro del movimiento: prostitución (abolición o regulación), gestación subrogada, identidad de género y sujeto del feminismo"],
+  figuras:[["Tarana Burke","inicia el lema «Me Too» (2006)"],["Chimamanda Ngozi Adichie","divulgación global del feminismo"],["Rita Segato","violencia de género en América Latina"],["Silvia Federici","trabajo doméstico y cuidados"],["Nancy Fraser","feminismo y justicia social"]],
+  obras:[["Todos deberíamos ser feministas","C. N. Adichie",2014],["La guerra contra las mujeres","R. Segato",2016],["Feminismo para el 99 %","Arruzza, Bhattacharya y Fraser",2019]],
+  espana:["Ley Orgánica 1/2004 de violencia de género y Ley Orgánica 3/2007 de igualdad","Huelga feminista del 8 de marzo de 2018, una de las mayores de Europa","Reacción social a la sentencia del caso «La Manada» (2018)","Ley Orgánica 10/2022 de garantía integral de la libertad sexual («solo sí es sí»)"],
+  conceptos:["Sororidad","Consentimiento","Techo de cristal","Brecha salarial","Economía de los cuidados","Ciberfeminismo"]
+}];
+
+const ROWS = [
+  ["contexto","Contexto"],
+  ["pidieron","Qué pidieron"],
+  ["aportaciones","Aportaciones"],
+  ["figuras","Figuras"],
+  ["obras","Obras clave"],
+  ["espana","En España"],
+  ["conceptos","Conceptos"]
+];
+
+const state = {view:"table", per:"es", sel:null, rows:new Set(ROWS.map(r=>r[0]))};
+try{ const s=JSON.parse(localStorage.getItem("olas-state")||"{}"); if(s.per) state.per=s.per; }catch(e){}
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function cell(w,key){
+  const v = w[key];
+  if(key==="contexto") return `<p style="margin:0">${esc(v)}</p>`;
+  if(key==="figuras") return `<ul>${v.map(([n,d])=>`<li class="who"><b>${esc(n)}</b>: ${esc(d)}</li>`).join("")}</ul>`;
+  if(key==="obras") return `<ul>${v.map(([t,a,y])=>`<li class="ref"><i>${esc(t)}</i>, ${esc(a)} <span class="y">${esc(y)}</span></li>`).join("")}</ul>`;
+  return `<ul>${v.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
+}
+
+function renderWaves(){
+  $("waves").innerHTML = WAVES.map(w=>`
+    <button class="wave" data-id="${w.id}" aria-pressed="${state.sel===w.id}">
+      <span class="num">${esc(w[state.per])}</span>
+      <span class="nm">${esc(w.nombre)}</span>
+      <span class="dt">${esc(w.fechas)}</span>
+    </button>`).join("");
+  $("waves").querySelectorAll(".wave").forEach(b=>b.onclick=()=>{
+    const id=b.dataset.id;
+    if(state.view==="cards"){ state.sel=id; }
+    else state.sel = state.sel===id ? null : id;
+    render();
+  });
+}
+
+function renderChips(){
+  $("chips").innerHTML = ROWS.map(([k,l])=>`<button class="chip" data-k="${k}" aria-pressed="${state.rows.has(k)}">${l}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    const k=b.dataset.k;
+    if(state.rows.has(k)){ if(state.rows.size>1) state.rows.delete(k); } else state.rows.add(k);
+    render();
+  });
+}
+
+function renderTable(){
+  const head = `<tr><th scope="col"><span class="num">Ola</span></th>${WAVES.map(w=>`
+    <th scope="col" class="${state.sel===w.id?'hl':''}"><span class="num">${esc(w[state.per])}</span><span class="nm">${esc(w.nombre)}</span><span class="dt">${esc(w.fechas)}</span></th>`).join("")}</tr>`;
+  const lema = `<tr><th scope="row">Lema</th>${WAVES.map(w=>`<td class="${state.sel===w.id?'hl':''}"><i>«${esc(w.lema)}»</i></td>`).join("")}</tr>`;
+  const body = ROWS.filter(([k])=>state.rows.has(k)).map(([k,l])=>
+    `<tr><th scope="row">${l}</th>${WAVES.map(w=>`<td class="${state.sel===w.id?'hl':''}">${cell(w,k)}</td>`).join("")}</tr>`).join("");
+  $("table-view").innerHTML = `<table><thead>${head}</thead><tbody>${lema}${body}</tbody></table>`;
+}
+
+function renderCard(){
+  const i = Math.max(0, WAVES.findIndex(w=>w.id===state.sel));
+  const w = WAVES[i];
+  const blocks = ROWS.filter(([k])=>state.rows.has(k)).map(([k,l])=>
+    `<section class="block ${k==='contexto'?'full':''}"><h3>${l}</h3>${cell(w,k)}</section>`).join("");
+  $("card-view").innerHTML = `
+    <article class="card">
+      <div class="card-head">
+        <div>
+          <span class="eyebrow">${esc(w[state.per])} · ${esc(w.fechas)}</span>
+          <h2>${esc(w.nombre)}</h2>
+          <p class="motto">«${esc(w.lema)}»</p>
+        </div>
+        <div class="nav">
+          <button id="prev" ${i===0?'disabled':''}>← Anterior</button>
+          <button id="next" ${i===WAVES.length-1?'disabled':''}>Siguiente →</button>
+        </div>
+      </div>
+      <div class="grid">${blocks}</div>
+    </article>`;
+  $("prev").onclick=()=>{state.sel=WAVES[i-1].id;render()};
+  $("next").onclick=()=>{state.sel=WAVES[i+1].id;render()};
+}
+
+function render(){
+  $("v-table").setAttribute("aria-pressed", state.view==="table");
+  $("v-cards").setAttribute("aria-pressed", state.view==="cards");
+  $("p-es").setAttribute("aria-pressed", state.per==="es");
+  $("p-en").setAttribute("aria-pressed", state.per==="en");
+  $("pnote").textContent = state.per==="es"
+    ? "Numeración habitual en la filosofía española (Amelia Valcárcel, Celia Amorós): la primera ola es el feminismo ilustrado y la segunda, el sufragismo."
+    : "Numeración anglosajona: la primera ola es el sufragismo, la segunda el feminismo de los años 60-70 y la tercera el de los 80-90. El feminismo ilustrado queda como precedente.";
+  renderWaves(); renderChips();
+  $("table-view").hidden = state.view!=="table";
+  $("card-view").hidden = state.view!=="cards";
+  if(state.view==="table") renderTable(); else renderCard();
+}
+
+$("v-table").onclick=()=>{state.view="table";render()};
+$("v-cards").onclick=()=>{state.view="cards"; if(!state.sel) state.sel=WAVES[0].id; render()};
+$("p-es").onclick=()=>{state.per="es";save();render()};
+$("p-en").onclick=()=>{state.per="en";save();render()};
+function save(){try{localStorage.setItem("olas-state",JSON.stringify({per:state.per}))}catch(e){}}
+render();
+</script>
+
+</body></html>

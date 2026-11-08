@@ -1,0 +1,154 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Características de la filosofía</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: una ficha por característica, con etiqueta de color a la izquierda y dos columnas (qué es / ejemplo). En móvil se apila. */
+:root {
+  --bg: oklch(0.975 0.008 265);
+  --fg: oklch(0.24 0.03 265);
+  --muted: oklch(0.45 0.03 265);
+  --line: oklch(0.88 0.015 265);
+  --lab-l: 0.5; --lab-c: 0.17; --lab-fg: oklch(0.99 0 0);
+  --tint-l: 0.955; --tint-c: 0.035;
+  --ex-l: 0.985; --ex-c: 0.015;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: oklch(0.2 0.025 265); --fg: oklch(0.94 0.01 265); --muted: oklch(0.76 0.02 265); --line: oklch(0.34 0.03 265);
+    --lab-l: 0.78; --lab-c: 0.13; --lab-fg: oklch(0.2 0.03 265);
+    --tint-l: 0.28; --tint-c: 0.05; --ex-l: 0.24; --ex-c: 0.03;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: oklch(0.2 0.025 265); --fg: oklch(0.94 0.01 265); --muted: oklch(0.76 0.02 265); --line: oklch(0.34 0.03 265);
+  --lab-l: 0.78; --lab-c: 0.13; --lab-fg: oklch(0.2 0.03 265);
+  --tint-l: 0.28; --tint-c: 0.05; --ex-l: 0.24; --ex-c: 0.03;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.5;
+  padding-block: 40px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+main { max-width: 1040px; margin: 0 auto; display: grid; gap: 28px; }
+header h1 {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.05; margin: 0 0 10px; letter-spacing: -0.02em; text-wrap: balance;
+}
+header p { margin: 0; color: var(--muted); max-width: 60ch; }
+.cols-head, .row { display: grid; grid-template-columns: 190px minmax(0, 1fr) minmax(0, 1fr); }
+.cols-head {
+  font-family: var(--font-display); font-weight: 700; font-size: 0.8rem;
+  text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted);
+  padding: 0 0 8px; border-bottom: 2px solid var(--line);
+}
+.cols-head span { padding: 0 18px; }
+.cols-head span:first-child { padding-left: 0; }
+.list { display: grid; gap: 12px; }
+.row {
+  --lab: oklch(var(--lab-l) var(--lab-c) var(--h));
+  --tint: oklch(var(--tint-l) var(--tint-c) var(--h));
+  --ex: oklch(var(--ex-l) var(--ex-c) var(--h));
+  border-radius: 14px; overflow: hidden; border: 1px solid var(--line);
+}
+.row h2 {
+  margin: 0; padding: 18px; background: var(--lab); color: var(--lab-fg);
+  font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; line-height: 1.15;
+  display: flex; align-items: center; text-wrap: balance;
+}
+.row .what { background: var(--tint); padding: 18px; min-width: 0; }
+.row .ex { background: var(--ex); padding: 18px; min-width: 0; border-left: 3px solid var(--lab); }
+.row p { margin: 0; }
+.tag {
+  display: none; font-family: var(--font-display); font-weight: 700; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 4px;
+}
+.ex em { font-style: italic; }
+.ex strong, .what strong { font-weight: 600; }
+footer { color: var(--muted); font-size: 0.9rem; }
+@media (max-width: 760px) {
+  .cols-head { display: none; }
+  .row { grid-template-columns: 1fr; }
+  .tag { display: block; }
+  .row .ex { border-left: 0; border-top: 3px solid var(--lab); }
+}
+</style>
+
+<main>
+  <header>
+    <h1>Características de la filosofía</h1>
+    <p>Nueve rasgos que distinguen al pensamiento filosófico, cada uno con un ejemplo para entenderlo en la práctica.</p>
+  </header>
+
+  <div>
+    <div class="cols-head" aria-hidden="true"><span>Característica</span><span>Qué significa</span><span>Ejemplo</span></div>
+    <div class="list">
+
+      <section class="row" style="--h:265">
+        <h2>Racional</h2>
+        <div class="what"><div class="tag">Qué significa</div><p>Como el mito, busca las causas de los fenómenos, pero se basa en fundamentos racionales: principios o leyes regulares y necesarias que rigen la naturaleza. La razón organiza las percepciones de los sentidos y las hace inteligibles. Se abandonan la imaginación y la fantasía.</p></div>
+        <div class="ex"><div class="tag">Ejemplo</div><p>El mito explicaba el rayo como la ira de Zeus. Tales de Mileto buscó el <em>arjé</em>, el principio natural de todas las cosas, en el agua, sin recurrir a los dioses.</p></div>
+      </section>
+
+      <section class="row" style="--h:235">
+        <h2>Argumentativa</h2>
+        <div class="what"><div class="tag">Qué significa</div><p>No recurre a justificaciones externas (la tradición, la autoridad o lo sobrenatural), sino a razones que puedan aportarse en el curso de la investigación.</p></div>
+        <div class="ex"><div class="tag">Ejemplo</div><p>«Es así porque lo dice la Biblia» o «porque siempre se ha hecho así» no es filosofía. Defender que la pena de muerte es injusta porque el error judicial es irreparable sí es argumentar.</p></div>
+      </section>
+
+      <section class="row" style="--h:200">
+        <h2>Sistemática</h2>
+        <div class="what"><div class="tag">Qué significa</div><p>Trata de ordenar y organizar de modo adecuado y coherente las ideas respecto a la realidad.</p></div>
+        <div class="ex"><div class="tag">Ejemplo</div><p>Aristóteles clasificó el saber en lógica, física, metafísica, ética, política y poética, y las relacionó entre sí como un edificio ordenado.</p></div>
+      </section>
+
+      <section class="row" style="--h:165">
+        <h2>Integradora</h2>
+        <div class="what"><div class="tag">Qué significa</div><p>No desestima ninguna perspectiva que resulte pertinente para analizar los problemas.</p></div>
+        <div class="ex"><div class="tag">Ejemplo</div><p>Ante la inteligencia artificial, la filosofía combina la mirada técnica, la ética, la jurídica, la económica y la antropológica, en lugar de quedarse con una sola.</p></div>
+      </section>
+
+      <section class="row" style="--h:130">
+        <h2>Analítica-crítica</h2>
+        <div class="what"><div class="tag">Qué significa</div><p>Analiza las definiciones y los conceptos sobre los que se fundan las creencias y pone en cuestión los saberes establecidos. <strong>Rechaza</strong> las creencias dogmáticas sin explicación argumentada y <strong>cuestiona</strong> los principios de la organización social, económica y cultural.</p></div>
+        <div class="ex"><div class="tag">Ejemplo</div><p>Sócrates preguntaba «¿qué es la justicia?» y mostraba que sus interlocutores no sabían definirla. Hoy podemos preguntar qué entendemos por «libertad de expresión» cuando un bulo se difunde como si fuera verdad.</p></div>
+      </section>
+
+      <section class="row" style="--h:75">
+        <h2>Reflexiva y autorreflexiva</h2>
+        <div class="what"><div class="tag">Qué significa</div><p>La razón cuestiona lo establecido, pero también analiza sus propios procedimientos para no caer en errores o prejuicios. Es un saber en constante reflexión sobre la realidad y sobre sí mismo.</p></div>
+        <div class="ex"><div class="tag">Ejemplo</div><p>Kant, en la <em>Crítica de la razón pura</em>, se pregunta qué puede conocer la razón y cuáles son sus límites: la razón se examina a sí misma.</p></div>
+      </section>
+
+      <section class="row" style="--h:40">
+        <h2>Radical</h2>
+        <div class="what"><div class="tag">Qué significa</div><p>Quiere llegar a la raíz de las cuestiones.</p></div>
+        <div class="ex"><div class="tag">Ejemplo</div><p>Ante «¿por qué estudio?», no basta con «para sacar un título». Se sigue preguntando: ¿para qué trabajar?, ¿qué es una vida buena?, ¿qué es la felicidad?</p></div>
+      </section>
+
+      <section class="row" style="--h:350">
+        <h2>Abierta</h2>
+        <div class="what"><div class="tag">Qué significa</div><p>No considera que haya llegado nunca a una solución definitiva.</p></div>
+        <div class="ex"><div class="tag">Ejemplo</div><p>Hace más de 2.000 años que se debate si somos libres o estamos determinados, y cada época aporta argumentos nuevos: Aristóteles, Spinoza, Sartre, la neurociencia actual.</p></div>
+      </section>
+
+      <section class="row" style="--h:305">
+        <h2>Normativa</h2>
+        <div class="what"><div class="tag">Qué significa</div><p>No solo ofrece una concepción teórica del mundo, sino que reflexiona sobre cómo debemos vivir. Propone, a partir de la crítica y la razón, orientaciones para la transformación individual y colectiva hacia la libertad, la justicia y la felicidad.</p></div>
+        <div class="ex"><div class="tag">Ejemplo</div><p>Kant propone el imperativo categórico: actúa solo según una máxima que puedas querer como ley universal. Rawls propone principios de justicia para organizar una sociedad.</p></div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer>Filosofía · Características del pensamiento filosófico</footer>
+</main>
+
+</body></html>
